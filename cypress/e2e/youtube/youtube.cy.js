@@ -3,12 +3,16 @@ import trendingListPage from "../../pages/youtubePages/trendingListPage";
 import moviePage from "../../pages/youtubePages/moviePage";
 
 describe('E2E Automation Cari Trending Video di Youtube', () => {
-    const xpathOfficialVideo = `//div[@id="primary-inner"]//ytd-watch-metadata`;
+    beforeEach(() => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+    });
 
     it('Search Video Trending on Youtube', () => {
         let judulFilm, channel;
 
         homepage.goToYoutube();
+        cy.wait(5000);
         homepage.goToTrendingMenu();
 
         // Get Judul Film

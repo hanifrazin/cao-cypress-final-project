@@ -23,3 +23,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // failing the test
   return false
 })
+
+Cypress.on('window:before:load', (win) => {
+  Object.defineProperty(win.navigator, 'language', { get: () => 'en-US' });
+  Object.defineProperty(win.navigator, 'languages', { get: () => ['en-US', 'en'] });
+});
