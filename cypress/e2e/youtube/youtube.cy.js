@@ -1,15 +1,48 @@
 import { Faker } from "@faker-js/faker";
 
 describe('E2E Automation Cari Trending Video di Youtube', () => {
+    const xpathListVideo3 = `//div[@id="content"]//ytd-page-manager//ytd-two-column-browse-results-renderer[@page-subtype="trending"]//div[@id="dismissible"]//ytd-video-renderer[3]//div[@id="dismissible"]//div[@class="text-wrapper style-scope ytd-video-renderer"]`
+    const xpathOfficialVideo = `//div[@id="primary-inner"]//ytd-watch-metadata`;
+
     it('Search Video Trending on Youtube', () => {
+        let judulFilm, channel;
+
         cy.visitYoutube();
-        cy.get('#start > #guide-button > #button > #guide-icon').should('be.visible').click();
         cy.get('#guide').contains('Explore').should('be.visible');
         cy.xpath(`//a[@title='Trending']`).should('be.visible').click();
-        cy.xpath(`//ytd-item-section-renderer[3]//div[@id="dismissible"][@class="style-scope ytd-shelf-renderer"]`).should('be.visible').scrollIntoView();
-        cy.get(`body > ytd-app:nth-child(4) > div:nth-child(6) > ytd-page-manager:nth-child(5) > ytd-browse:nth-child(5) > ytd-two-column-browse-results-renderer:nth-child(11) > div:nth-child(1) > ytd-section-list-renderer:nth-child(1) > div:nth-child(2) > ytd-item-section-renderer:nth-child(3) > div:nth-child(3) > ytd-shelf-renderer:nth-child(1) > div:nth-child(1) > div:nth-child(2) > ytd-expanded-shelf-contents-renderer:nth-child(1) > div:nth-child(1) > ytd-video-renderer:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > a:nth-child(2)`).click();
-        // cy.wait(20000);
-        // cy.xpath(`//div[@class="style-scope tp-yt-app-drawer visible"]`).should('be.visible');
+        cy.get(`#tabsContainer`).contains('Movies').click();
+        cy.xpath(`//div[@class="yt-tab-shape-wiz__tab yt-tab-shape-wiz__tab--tab-selected"]`).should('exist');
+        cy.wait(5000)
 
+        // Get Title
+        cy.xpath(`${xpathListVideo3}//a[@id="video-title"]/yt-formatted-string[@class="style-scope ytd-video-renderer"]`)
+          .invoke('text')
+          .then((titleValue) => {
+                judulFilm = titleValue;
+        });
+        
+        // Get Assertion
+        cy.xpath(`${xpathListVideo3}//ytd-video-meta-block//ytd-channel-name//a`)
+          .invoke('text')
+          .then((aText) => {
+                channel = aText;
+        });
+
+        cy.then(() => {
+            cy.log(`Judul Film : ${judulFilm}`);
+            cy.log(`Channel Name : ${channel}`)
+            cy.xpath(`${xpathListVideo3}`).click({multiple:true});
+            cy.wait(10000);
+            cy.xpath(`${xpathOfficialVideo}//h1/yt-formatted-string`).should('have.text',`${judulFilm}`);
+            cy.xpath(`${xpathOfficialVideo}//ytd-video-owner-renderer//ytd-channel-name//a`).should('have.text',`${channel}`);
+            cy.xpath(`//div[@id="above-the-fold"]//button[@class="yt-spec-button-shape-next yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m yt-spec-button-shape-next--icon-leading yt-spec-button-shape-next--enable-backdrop-filter-experiment"][@title="Share"]`).click();
+            cy.xpath(`//ytd-unified-share-panel-renderer`).should('be.visible');
+            cy.xpath(`//ytd-unified-share-panel-renderer//button[@class="yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--call-to-action yt-spec-button-shape-next--size-m yt-spec-button-shape-next--enable-backdrop-filter-experiment"]`).click();
+            cy.xpath(`//input[@id="share-url"]`)
+              .invoke('val')
+              .then((linkUrl) => {
+                    cy.log(`Link Url : ${linkUrl}`)
+            })
+        })
     });
 });
