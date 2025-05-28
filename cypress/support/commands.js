@@ -18,13 +18,7 @@ Cypress.Commands.add('visitAgoda', (url = '/')=>{
 });
 
 Cypress.Commands.add('visitAmazon', (url = '/')=>{
-    cy.visit(`https://www.amazon.com${url}`,{
-        onBeforeLoad(win){
-            Object.defineProperty(win.navigator, 'language', {
-            value: 'en'
-        })
-        }
-    });
+    cy.visit(`https://www.amazon.com${url}`);
 });
 
 Cypress.Commands.add('visitYoutube', (url = '/')=>{

@@ -41,7 +41,7 @@ module.exports = defineConfig({
       })
     },
     chromeWebSecurity: false,
-    defaultCommandTimeout: 20000,
+    defaultCommandTimeout: 40000,
   },
   video: true,
   locale: 'en',
