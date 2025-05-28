@@ -23,7 +23,7 @@ jobs:
           node-version: 22.14.0
 
       - name: Clean and install dependencies
-        run: rm -rf node_modules && npm install
+        run: rm -rf node_modules package-lock.json && npm install
 
       - name: Fix Cypress permissions
         run: chmod +x node_modules/.bin/cypress
