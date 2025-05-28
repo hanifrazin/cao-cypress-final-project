@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-28T15:41:12.881Z",
+    "end": "2025-05-28T15:41:33.854Z",
+    "duration": 20973,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "835dfeaf-4c85-4bf4-843e-00856147f971",
+      "title": "",
+      "fullFile": "cypress/e2e/amazon/amazon.cy.js",
+      "file": "cypress/e2e/amazon/amazon.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d2b5af9c-2aa8-446e-9119-456ddc720043",
+          "title": "E2E Automation Cari Kursi di Amazon",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cari Kursi di Amazon",
+              "fullTitle": "E2E Automation Cari Kursi di Amazon Cari Kursi di Amazon",
+              "timedOut": null,
+              "duration": 19053,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visitAmazon();\ncy.wait(5000);\ncy.scrollTo(\"top\");\n_cariBarang.default.typeKeyword('chair');\ncy.wait(1000);\n_cariBarang.default.removeDismissPopUp();\n_pilihSortDropdown.default.selectPriceDesc();\ncy.wait(3000);\n_Barang.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_Barang.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\n_Barang.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_Barang.default.clickBarang();\n_detailBarang.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_detailBarang.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});\n// cy.then((data) => {\n//     cy.wrap(data).as('expectedData')\n//     cy.get('@expectedData')\n// })",
+              "err": {},
+              "uuid": "b6cf8e47-9d4d-40f2-a3e1-cce911bb68b4",
+              "parentUUID": "d2b5af9c-2aa8-446e-9119-456ddc720043",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b6cf8e47-9d4d-40f2-a3e1-cce911bb68b4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 19053,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": true,
+        "html": true,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

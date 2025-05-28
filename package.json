@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --browser chrome --headless --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
+    "test:all": "npx cypress run --browser chrome --headless --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
     "test:youtube": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/youtube/youtube.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
+    "test:amazon": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/amazon/amazon.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
     "merge-reports": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/mochawesome.json",
     "generate-report": "marge cypress/reports/mochawesome.json --reportDir cypress/reports/mochawesome-report",
     "report": "npm run merge-reports && npm run generate-report",
