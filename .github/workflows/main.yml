@@ -35,10 +35,10 @@ jobs:
         run: npm run test:report
 
       - name: Debug Report Folder
-        run: ls -lah cypress/report/html
+        run: ls -lah cypress/reports/mochawesome-report
 
       - name: Upload Cypress Reports
         uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
-          path: cypress/report/html
+          path: cypress/reports
