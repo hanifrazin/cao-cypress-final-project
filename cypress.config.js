@@ -1,5 +1,23 @@
 const { defineConfig } = require("cypress");
 
+const envVariables = {
+  LANGUAGE: 'en', // default bahasa, bisa diubah saat run
+  labelYoutube: {
+    en: {
+      explore: "Explore",
+      trend: "Trending",
+      movie: "Movies",
+      share: "Share"
+    },
+    id: {
+      explore: "Eksplorasi",
+      trend: "Trending",
+      movie: "Film",
+      share: "Bagikan"
+    },
+  },
+};
+
 module.exports = defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
@@ -12,11 +30,12 @@ module.exports = defineConfig({
 
           return null
         },
-      });
+      })
     },
     chromeWebSecurity: false,
     defaultCommandTimeout: 40000,
   },
   video: true,
   locale: 'en',
+  env: envVariables
 });

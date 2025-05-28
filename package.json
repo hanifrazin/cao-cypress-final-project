@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "youtube" : "npx cypress run --browser chrome --headed --spec \"cypress/e2e/youtube/youtube.cy.js\""
+    "youtube": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/youtube/youtube.cy.js\"",
+    "youtube:en": "npx cypress run --browser chrome --headless --env LANGUAGE=en --spec \"cypress/e2e/youtube/youtube.cy.js\"",
+    "youtube:id": "npx cypress run --browser chrome --headless --env LANGUAGE=id --spec \"cypress/e2e/youtube/youtube.cy.js\""
   },
   "repository": {
     "type": "git",
