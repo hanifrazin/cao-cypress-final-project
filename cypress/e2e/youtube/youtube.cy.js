@@ -14,7 +14,8 @@ describe('E2E Automation Cari Trending Video di Youtube', () => {
         let judulFilm, channel;
 
         cy.visitYoutube();
-        homepage.getLangYoutube(),then((lang) => {
+        homepage.getLangYoutube().then((langAttr) => {
+            cy.log(`Language Default : ${langAttr}`)
             lang = langAttr === "id-ID" ? "id" : "en";
         });
 
