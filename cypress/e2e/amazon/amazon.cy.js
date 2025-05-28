@@ -9,7 +9,7 @@ let nmBarang, hrgBarang;
 describe('E2E Automation Cari Kursi di Amazon', () => {
     it('Cari Kursi di Amazon', () => {
         cy.visitAmazon();
-        cy.wait(5000);
+        cy.wait(10000);
         cy.scrollTo("top")
         cariBarang.typeKeyword('chair');
         cy.wait(1000);
