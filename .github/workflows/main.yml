@@ -32,7 +32,7 @@ jobs:
         run: ls -lah node_modules/.bin/
 
       - name: Run Cypress tests
-        run: npm run test:report
+        run: npm run test
 
       - name: Debug Report Folder
         run: ls -la mochawesome-report
