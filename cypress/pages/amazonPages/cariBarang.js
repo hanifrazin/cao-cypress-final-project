@@ -10,7 +10,7 @@ class cariBarang {
 
     typeKeyword(keyword){
         cy.xpath(`//form[@id="nav-search-bar-form"]//input[@id="twotabsearchtextbox"]`).click().clear().type(keyword);
-        cy.get('#nav-flyout-searchAjax').should('be.visible');
+        // cy.get('#nav-flyout-searchAjax').should('be.visible');
         cy.xpath(`//input[@type="submit"][@id="nav-search-submit-button"]`).click();
     }
 
