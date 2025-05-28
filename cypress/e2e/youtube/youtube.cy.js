@@ -1,4 +1,4 @@
-import homepage from "../../pages/youtubePages/homepage";
+import homepage from "../../pages/youtubePages/homePage";
 import trendingListPage from "../../pages/youtubePages/trendingListPage";
 import moviePage from "../../pages/youtubePages/moviePage";
 
