@@ -35,7 +35,7 @@ jobs:
         run: npm run test:youtube
 
       - name: Debug Report Folder
-        run: ls -la mochawesome-report
+        run: ls -lah cypress/reports/mochawesome-report
 
       - name: Upload Cypress Reports
         uses: actions/upload-artifact@v4
