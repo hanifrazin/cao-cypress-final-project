@@ -21,6 +21,14 @@ const envVariables = {
 module.exports = defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/reports/mochawesome-report',
+    overwrite: true,
+    html: true,
+    json: true,
+    timestamp: 'mmddyyyy_HHMMss'
+  },
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -33,7 +41,7 @@ module.exports = defineConfig({
       })
     },
     chromeWebSecurity: false,
-    defaultCommandTimeout: 40000,
+    defaultCommandTimeout: 20000,
   },
   video: true,
   locale: 'en',
