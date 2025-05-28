@@ -13,7 +13,7 @@ describe('E2E Automation Cari Kursi di Amazon', () => {
         cy.scrollTo("top")
         cariBarang.typeKeyword('chair');
         cy.wait(1000);
-        cariBarang.removeDismissPopUp();
+        // cariBarang.removeDismissPopUp();
         pilihSortDropdown.selectPriceDesc();
         cy.wait(3000);
         
