@@ -38,7 +38,7 @@ jobs:
         run: ls -lah cypress/report/html
 
       - name: Upload Cypress Reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
           path: cypress/report/html
