@@ -7,6 +7,11 @@ let totalData = 0;
 let nmBarang, hrgBarang;
 
 describe('E2E Automation Cari Kursi di Amazon', () => {
+    beforeEach(() => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+    });
+
     it('Cari Kursi di Amazon', () => {
         cy.visit(`${Cypress.env("amazon")}`);
         cy.wait(8000);
