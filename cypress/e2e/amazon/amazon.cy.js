@@ -24,7 +24,6 @@ describe('E2E Automation Cari Kursi di Amazon', () => {
             nmBarang = data;
             cy.log(`Nama Barang = ${nmBarang}`)
         });
-        cy.scrollTo("top");
         Barang.getHargaBarang().then((data) => {
             hrgBarang = data;
             cy.log(`Harga Barang = ${hrgBarang}`)

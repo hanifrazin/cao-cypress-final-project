@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-05-29T02:08:39.253Z",
-    "end": "2025-05-29T02:09:34.945Z",
-    "duration": 55692
+    "start": "2025-05-29T02:21:18.950Z",
+    "end": "2025-05-29T02:22:15.471Z",
+    "duration": 56521
   },
   "results": [
     {
-      "uuid": "dd982d43-99cd-4875-8270-5e498d906245",
+      "uuid": "5ff863ad-e27d-4ce7-8763-50b6f41f2e43",
       "title": "",
       "fullFile": "cypress/e2e/agoda/agoda.cy.js",
       "file": "cypress/e2e/agoda/agoda.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "3e028a32-d312-489a-91cb-62abbadd3022",
+          "uuid": "ebca34a6-d958-4ae8-94ac-af93aa9046aa",
           "title": "E2E Automation Cari Tiket di Agoda",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Buka Web Agoda",
               "fullTitle": "E2E Automation Cari Tiket di Agoda Buka Web Agoda",
               "timedOut": null,
-              "duration": 3210,
+              "duration": 2743,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.visit(`${Cypress.env(\"agoda\")}`);",
               "err": {},
-              "uuid": "5906061c-064f-4dee-ab4a-0505e99c8c9d",
-              "parentUUID": "3e028a32-d312-489a-91cb-62abbadd3022",
+              "uuid": "01ef2441-e836-487b-95ae-75c9a4e95289",
+              "parentUUID": "ebca34a6-d958-4ae8-94ac-af93aa9046aa",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5906061c-064f-4dee-ab4a-0505e99c8c9d"
+            "01ef2441-e836-487b-95ae-75c9a4e95289"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3210,
+          "duration": 2743,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,7 +76,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "647e93b9-ab1b-41fc-90a4-deac28cc4118",
+      "uuid": "d504762e-62c0-4e5a-bbfc-09faaf14c040",
       "title": "",
       "fullFile": "cypress/e2e/amazon/amazon.cy.js",
       "file": "cypress/e2e/amazon/amazon.cy.js",
@@ -85,7 +85,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "68afa143-68df-421e-b374-9f11afe1e9df",
+          "uuid": "a36b850f-50f1-489d-a522-e84473e96a5b",
           "title": "E2E Automation Cari Kursi di Amazon",
           "fullFile": "",
           "file": "",
@@ -96,29 +96,29 @@
               "title": "Cari Kursi di Amazon",
               "fullTitle": "E2E Automation Cari Kursi di Amazon Cari Kursi di Amazon",
               "timedOut": null,
-              "duration": 20849,
+              "duration": 21275,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(`${Cypress.env(\"amazon\")}`);\ncy.wait(8000);\ncy.scrollTo(\"top\");\n_cariBarang.default.typeKeyword('chair');\ncy.wait(1000);\n_pilihSortDropdown.default.selectPriceDesc();\ncy.wait(3000);\n_Barang.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_Barang.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\ncy.scrollTo(\"top\");\n_Barang.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_Barang.default.clickBarang();\n_detailBarang.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_detailBarang.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});\n// cy.then((data) => {\n//     cy.wrap(data).as('expectedData')\n//     cy.get('@expectedData')\n// })",
+              "code": "cy.visit(`${Cypress.env(\"amazon\")}`);\ncy.wait(8000);\ncy.scrollTo(\"top\");\n_cariBarang.default.typeKeyword('chair');\ncy.wait(1000);\n_pilihSortDropdown.default.selectPriceDesc();\ncy.wait(3000);\n_Barang.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_Barang.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\n_Barang.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_Barang.default.clickBarang();\n_detailBarang.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_detailBarang.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});\n// cy.then((data) => {\n//     cy.wrap(data).as('expectedData')\n//     cy.get('@expectedData')\n// })",
               "err": {},
-              "uuid": "40636c49-bcf7-4d47-a003-9c8a39fee2b5",
-              "parentUUID": "68afa143-68df-421e-b374-9f11afe1e9df",
+              "uuid": "465b4841-ec08-45e7-8ba9-a6752654370d",
+              "parentUUID": "a36b850f-50f1-489d-a522-e84473e96a5b",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "40636c49-bcf7-4d47-a003-9c8a39fee2b5"
+            "465b4841-ec08-45e7-8ba9-a6752654370d"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 20849,
+          "duration": 21275,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -134,7 +134,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "8066308a-2375-468c-8f65-355e72074689",
+      "uuid": "c0dcd820-77db-4a4d-8ab8-879c82db1819",
       "title": "",
       "fullFile": "cypress/e2e/youtube/youtube.cy.js",
       "file": "cypress/e2e/youtube/youtube.cy.js",
@@ -143,7 +143,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d2cc2d8f-65a8-4d90-8c51-006e5ed7a9bf",
+          "uuid": "8ad33cc4-d2b2-4302-8db6-fa727196736e",
           "title": "E2E Automation Cari Trending Video di Youtube",
           "fullFile": "",
           "file": "",
@@ -154,7 +154,7 @@
               "title": "Search Video Trending on Youtube",
               "fullTitle": "E2E Automation Cari Trending Video di Youtube Search Video Trending on Youtube",
               "timedOut": null,
-              "duration": 22813,
+              "duration": 23740,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -163,20 +163,20 @@
               "context": null,
               "code": "let lang = Cypress.env('LANGUAGE') || 'en';\nconst messages = Cypress.env('labelYoutube');\nlet judulFilm, channel;\ncy.visit(`${Cypress.env(\"youtube\")}`);\n_homePage.default.getLangYoutube().then(langAttr => {\n  cy.log(`Language Default : ${langAttr}`);\n  lang = langAttr === \"id-ID\" ? \"id\" : \"en\";\n});\ncy.then(() => {\n  _homePage.default.goToTrendingMenu(messages[lang].explore);\n  _homePage.default.goToMoviesTab(messages[lang].movie);\n  // Get Judul Film\n  _trendingListPage.default.getJudulFilm().then(judul => {\n    judulFilm = judul;\n  });\n  // Get Channel\n  _trendingListPage.default.getChannelYoutube().then(src => {\n    channel = src;\n  });\n  cy.then(() => {\n    cy.log(`Judul Film : ${judulFilm}`);\n    cy.log(`Channel Name : ${channel}`);\n    _trendingListPage.default.clickMovies();\n    cy.wait(10000);\n    _moviePage.default.getMovieTitle(judulFilm);\n    _moviePage.default.getMovieChannel(channel);\n    _moviePage.default.clickShareAndCopy(messages[lang].share);\n    _moviePage.default.getLinkUrl().then(link => {\n      cy.log(`Link Url : ${link}`);\n    });\n  });\n});",
               "err": {},
-              "uuid": "4660a465-48bf-43cb-a573-f2562288d05b",
-              "parentUUID": "d2cc2d8f-65a8-4d90-8c51-006e5ed7a9bf",
+              "uuid": "b37c4bea-f6c6-4ad9-8843-d5c668ebfc44",
+              "parentUUID": "8ad33cc4-d2b2-4302-8db6-fa727196736e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4660a465-48bf-43cb-a573-f2562288d05b"
+            "b37c4bea-f6c6-4ad9-8843-d5c668ebfc44"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 22813,
+          "duration": 23740,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
