@@ -8,15 +8,14 @@ let nmBarang, hrgBarang;
 
 describe('E2E Automation Cari Kursi di Amazon', () => {
     it('Cari Kursi di Amazon', () => {
-        cy.visitAmazon();
-        cy.wait(10000);
-        cy.scrollTo("top")
+        cy.visit(`${Cypress.env("amazon")}`);
+        cy.wait(8000);
+        cy.scrollTo("top");
         cariBarang.typeKeyword('chair');
         cy.wait(1000);
-        // cariBarang.removeDismissPopUp();
+
         pilihSortDropdown.selectPriceDesc();
         cy.wait(3000);
-        
         Barang.getTotalData().then(($val) => {
             totalData = $val.length;
             cy.log(`Banyaknya data = ${totalData}`)
@@ -25,6 +24,7 @@ describe('E2E Automation Cari Kursi di Amazon', () => {
             nmBarang = data;
             cy.log(`Nama Barang = ${nmBarang}`)
         });
+        cy.scrollTo("top");
         Barang.getHargaBarang().then((data) => {
             hrgBarang = data;
             cy.log(`Harga Barang = ${hrgBarang}`)

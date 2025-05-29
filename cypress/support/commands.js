@@ -12,15 +12,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-Cypress.Commands.add('visitAgoda', (url = '/')=>{
-    cy.visit(`https://www.agoda.com${url}`,{timeout:40000});
-});
-
-Cypress.Commands.add('visitAmazon', (url = '/')=>{
-    cy.visit(`https://www.amazon.com${url}`);
-});
-
-Cypress.Commands.add('visitYoutube', (url = '/')=>{
-    cy.visit(`https://www.youtube.com${url}`);
-});

@@ -42,8 +42,13 @@ module.exports = defineConfig({
     },
     chromeWebSecurity: false,
     defaultCommandTimeout: 40000,
+    env:{
+      "youtube": "https://www.youtube.com/",
+      "amazon": "https://www.amazon.com/",
+      "agoda": "https://www.agoda.com/",
+      ...envVariables
+    }
   },
   video: true,
-  locale: 'en',
-  env: envVariables
+  locale: 'en'
 });

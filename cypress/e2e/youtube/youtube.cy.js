@@ -13,7 +13,7 @@ describe('E2E Automation Cari Trending Video di Youtube', () => {
         const messages = Cypress.env('labelYoutube');
         let judulFilm, channel;
 
-        cy.visitYoutube();
+        cy.visit(`${Cypress.env("youtube")}`);
         homepage.getLangYoutube().then((langAttr) => {
             cy.log(`Language Default : ${langAttr}`)
             lang = langAttr === "id-ID" ? "id" : "en";
