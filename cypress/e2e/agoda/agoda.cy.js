@@ -9,9 +9,6 @@ const cabinType = "Economy"
 const passenger = 1;
 const today = DateTime.now();
 const nextDay = today.plus({days:1});
-const monthNow = `${today.monthLong} ${today.year}`;
-const monthNext = `${nextDay.monthLong} ${nextDay.year}`;
-let tanggal = [];
 
 describe('E2E Automation Cari Tiket di Agoda', () => {
     beforeEach(() => {

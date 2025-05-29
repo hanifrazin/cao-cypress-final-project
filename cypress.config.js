@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const { DateTime } = require("luxon");
 
 const envVariables = {
   LANGUAGE: 'en', // default bahasa, bisa diubah saat run
@@ -24,7 +25,7 @@ module.exports = defineConfig({
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: 'cypress/reports/mochawesome-report',
-    overwrite: true,
+    overwrite: false,
     html: true,
     json: true,
     timestamp: 'mmddyyyy_HHMMss'
