@@ -5,6 +5,7 @@ import detailBarang from "../../pages/amazonPages/detailBarang";
 
 let totalData = 0;
 let nmBarang, hrgBarang;
+const input = Cypress.env("amazon");
 
 describe('E2E Automation Cari Kursi di Amazon', () => {
     beforeEach(() => {
@@ -13,10 +14,10 @@ describe('E2E Automation Cari Kursi di Amazon', () => {
     });
 
     it('Cari Kursi di Amazon', () => {
-        cy.visit(`${Cypress.env("amazon")}`);
+        cy.visit(`${input.url}`);
         cy.wait(8000);
         cy.scrollTo("top");
-        cariBarang.typeKeyword('chair');
+        cariBarang.typeKeyword(`${input.typeKeyword}`);
         cy.wait(1000);
 
         pilihSortDropdown.selectPriceDesc();

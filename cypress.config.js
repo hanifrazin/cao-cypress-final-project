@@ -3,7 +3,8 @@ const { DateTime } = require("luxon");
 
 const envVariables = {
   LANGUAGE: 'en', // default bahasa, bisa diubah saat run
-  labelYoutube: {
+  youtube: {
+    url: "https://www.youtube.com/",
     en: {
       explore: "Explore",
       trend: "Trending",
@@ -17,6 +18,21 @@ const envVariables = {
       share: "Bagikan"
     },
   },
+  amazon: {
+    url: "https://www.amazon.com/",
+    typeKeyword: "chair"
+  },
+  agoda: {
+    url: "https://www.agoda.com/", 
+    cityFrom: "Jakarta",
+    departureFrom: "CGK",
+    cityArrival: "Singapore",
+    arrivalTo: "SIN",
+    cabinType: "Economy",
+    passenger: 1,
+    today: DateTime.now(),
+    nextDay: DateTime.now().plus({days:1}),
+  }
 };
 
 module.exports = defineConfig({
@@ -44,9 +60,6 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     defaultCommandTimeout: 40000,
     env:{
-      "youtube": "https://www.youtube.com/",
-      "amazon": "https://www.amazon.com/",
-      "agoda": "https://www.agoda.com/",
       ...envVariables
     }
   },

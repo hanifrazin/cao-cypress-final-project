@@ -5,7 +5,7 @@ class detailBarang {
     }
 
     checkHrgBarang(){
-        return cy.xpath(`//div[@id="corePriceDisplay_desktop_feature_div"]//span[@class="aok-offscreen"]`).invoke('text')  
+        return cy.xpath(`//div[@id="apex_desktop"]//span[@class="a-price-whole"]`).invoke('text')  
     }
 
 }

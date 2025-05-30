@@ -13,7 +13,7 @@ class Barang {
     }
 
     getHargaBarang(){
-        return cy.xpath(`${this.xpathItemKe5}//div[@data-cy="price-recipe"]//span[@class="a-offscreen"]`).invoke('text');
+        return cy.xpath(`${this.xpathItemKe5}//div[@data-cy="price-recipe"]//span[@class="a-price-whole"]`).invoke('text');
     }
 
     clickBarang(){

@@ -2,6 +2,10 @@ import homepage from "../../pages/youtubePages/homePage";
 import trendingListPage from "../../pages/youtubePages/trendingListPage";
 import moviePage from "../../pages/youtubePages/moviePage";
 
+let lang = Cypress.env('LANGUAGE') || 'en';
+const input = Cypress.env('youtube');
+let judulFilm, channel;
+
 describe('E2E Automation Cari Trending Video di Youtube', () => {
     beforeEach(() => {
         cy.clearCookies();
@@ -9,19 +13,16 @@ describe('E2E Automation Cari Trending Video di Youtube', () => {
     });
 
     it('Search Video Trending on Youtube', () => {
-        let lang = Cypress.env('LANGUAGE') || 'en';
-        const messages = Cypress.env('labelYoutube');
-        let judulFilm, channel;
 
-        cy.visit(`${Cypress.env("youtube")}`);
+        cy.visit(`${input.url}`);
         homepage.getLangYoutube().then((langAttr) => {
             cy.log(`Language Default : ${langAttr}`)
             lang = langAttr === "id-ID" ? "id" : "en";
         });
 
         cy.then(() => {
-            homepage.goToTrendingMenu(messages[lang].explore);
-            homepage.goToMoviesTab(messages[lang].movie);
+            homepage.goToTrendingMenu(input[lang].explore);
+            homepage.goToMoviesTab(input[lang].movie);
 
             // Get Judul Film
             trendingListPage.getJudulFilm().then((judul) => {
@@ -40,7 +41,7 @@ describe('E2E Automation Cari Trending Video di Youtube', () => {
                 cy.wait(10000);
                 moviePage.getMovieTitle(judulFilm);
                 moviePage.getMovieChannel(channel);
-                moviePage.clickShareAndCopy(messages[lang].share);
+                moviePage.clickShareAndCopy(input[lang].share);
                 moviePage.getLinkUrl()
                         .then((link) => {
                             cy.log(`Link Url : ${link}`)
