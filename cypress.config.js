@@ -6,8 +6,9 @@ const gender = faker.helpers.arrayElement(['male', 'female']);
 const firstPerson = faker.person.firstName(gender);
 const middlePerson = faker.person.middleName(gender);
 const lastPerson = faker.person.lastName();
-const emailPerson = faker.internet.email({firstName: firstPerson.toLowerCase(), lastName: lastPerson.toLowerCase(), provider: 'gmail.com'})
-const phonePerson = `857${faker.number.int({min: 11111111,max: 99999999})}`
+const emailPerson = faker.internet.email({firstName: firstPerson.toLowerCase(), provider: 'gmail.com'});
+const phonePerson = `857${faker.number.int({min: 11111111,max: 99999999})}`;
+const passNumber = faker.number.int({min: 111111111,max: 999999999})// Simulate a passport number
 
 const envVariables = {
   LANGUAGE: 'en', // default bahasa, bisa diubah saat run
@@ -49,7 +50,8 @@ const envVariables = {
       email: emailPerson,
       phone: phonePerson,
       nationality: 'Indonesia',
-      sex: gender
+      sex: gender,
+      passportNumber: passNumber
     }
   }
 };

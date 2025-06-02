@@ -7,10 +7,10 @@
     "merge-reports": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/merge/merge-mochawesome.json",
     "generate-report": "marge cypress/reports/merge/merge-mochawesome.json --reportDir cypress/reports/html",
     "report": "npm run merge-reports && npm run generate-report",
-    "test:all": "npx cypress run --browser chrome --headless --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
-    "test:youtube": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/youtube/youtube.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
-    "test:amazon": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/amazon/amazon.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
-    "test:agoda": "npx cypress run --browser chrome --headless --spec \"cypress/e2e/agoda/agoda.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true"
+    "test:all": "npx cypress run --browser chrome --headed --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
+    "test:youtube": "npx cypress run --browser chrome --headed --spec \"cypress/e2e/youtube/youtube.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
+    "test:amazon": "npx cypress run --browser chrome --headed --spec \"cypress/e2e/amazon/amazon.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true",
+    "test:agoda": "npx cypress run --browser chrome --headed --spec \"cypress/e2e/agoda/agoda.cy.js\" --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,json=true"
   },
   "repository": {
     "type": "git",
