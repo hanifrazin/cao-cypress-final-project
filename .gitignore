@@ -143,3 +143,8 @@ cypress/e2e/2-advanced-examples/*
 
 cypress/reports/mochawesome-report
 cypress/reports/mochawesome-report/*
+
+cypress/videos
+cypress/videos/*
+cypress/screenshots
+cypress/screenshots/*
