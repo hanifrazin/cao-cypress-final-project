@@ -63,7 +63,8 @@ describe('E2E Automation Cari Tiket di Agoda', () => {
         cy.wait(2000)
 
         cy.xpath(`//button[@data-component="flight-continue-to-addOns-button"]`).click({force:true});
-        cy.contains('No, thanks,').click();
+        // cy.xpath(`//div[@role="radio"][@data-testid="radio-button-option-no"]/div/div/img[1]`).click();
+        cy.contains(`[data-testid="radio-button-option-no"]`,`No, thanks, I’ll risk it.`).click();
 
         cy.xpath(`//button[@type="submit" and @data-testid="continue-to-payment-button"]`).click();
 
