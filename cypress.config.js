@@ -1,13 +1,13 @@
 const { defineConfig } = require("cypress");
 const { DateTime } = require("luxon");
-const { fakerID_ID: faker } = require("@faker-js/faker")
+const { fakerEN_AU: faker } = require("@faker-js/faker")
 
 const gender = faker.helpers.arrayElement(['male', 'female']);
 const firstPerson = faker.person.firstName(gender);
 const middlePerson = faker.person.middleName(gender);
 const lastPerson = faker.person.lastName();
 const emailPerson = faker.internet.email({firstName: firstPerson.toLowerCase(), provider: 'gmail.com'});
-const phonePerson = `857${faker.number.int({min: 11111111,max: 99999999})}`;
+const phonePerson = `800${faker.number.int({min: 11111111,max: 99999999})}`;
 const passNumber = faker.number.int({min: 111111111,max: 999999999})// Simulate a passport number
 
 const envVariables = {
