@@ -1,11 +1,11 @@
 {
   "stats": {
-    "suites": 3,
-    "tests": 3,
-    "passes": 3,
+    "suites": 8,
+    "tests": 8,
+    "passes": 8,
     "pending": 0,
     "failures": 0,
-    "testsRegistered": 3,
+    "testsRegistered": 8,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -13,8 +13,8 @@
     "skipped": 0,
     "hasSkipped": false,
     "start": "2025-06-03T01:30:39.658Z",
-    "end": "2025-06-03T01:32:20.597Z",
-    "duration": 100939
+    "end": "2025-06-03T02:13:45.239Z",
+    "duration": 2585581
   },
   "results": [
     {
@@ -177,6 +177,296 @@
           "pending": [],
           "skipped": [],
           "duration": 23046,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1e0e25bc-9d87-4a93-9174-afe09279266d",
+      "title": "",
+      "fullFile": "cypress/e2e/agoda/agoda.cy.js",
+      "file": "cypress/e2e/agoda/agoda.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d586304e-00e0-4db5-8e2d-b8a55eb46efd",
+          "title": "E2E Automation Cari Tiket di Agoda",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Pesan Tiket dari Jakarta ke Singapura dengan Malaysia Airlines",
+              "fullTitle": "E2E Automation Cari Tiket di Agoda Pesan Tiket dari Jakarta ke Singapura dengan Malaysia Airlines",
+              "timedOut": null,
+              "duration": 50351,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\n_destinationPlan.default.clickFlightTab();\ncy.wait(5000);\n// Flying From\n_destinationPlan.default.flyingFrom(input.cityFrom, input.departureAirport, input.departureFrom);\n// Flying To\n_destinationPlan.default.flyingTo(input.cityArrival, input.arrivalAirport, input.arrivalTo);\n// cy.xpath(`//div[@class=\"DayPicker-Months DayPicker-Months-Wide\"]/div[1]`).should('have.contain',`${monthNow}`);\ncy.xpath(`//span[@data-selenium-date='${nextDayDate.toFormat(\"yyyy-MM-dd\")}']`).click({\n  multiple: true\n});\n_destinationPlan.default.dateSelectorTitle().then(val => {\n  expect(val).to.be.equal(`${nextDayDate.day} ${nextDayDate.monthShort} ${nextDayDate.year}`);\n});\n_destinationPlan.default.dateSelectorDesc().then(val => {\n  expect(val).to.be.equal(`${nextDayDate.toFormat(\"ccc\")}, ${nextDayDate.day} ${nextDayDate.monthShort} ${nextDayDate.year}`);\n});\n_destinationPlan.default.checkCabin(input.passenger, input.cabinType);\n_destinationPlan.default.clickSearchFlights();\ncy.wait(3000);\n_cariPesawat.default.cekListUrl(input.departureFrom, input.arrivalTo, nextDayDate.toFormat(\"yyyy-MM-dd\"), input.cabinType, input.passenger);\n_cariPesawat.default.selectMalaysiaAirlines();\n_cariPesawat.default.clickSortByDropdown;\ncy.xpath(`//div[@data-testid=\"departure-time\"]//h3`).each($ele => {\n  dataDepTime.push($ele.text());\n}).then(() => {\n  const setDepTime = new Set(dataDepTime);\n  timeList = Array.from(setDepTime);\n});\n_cariPesawat.default.clickListMalaysiaAirlines(timeList[0]);\ncy.wait(3000);\n// Contact Details\n_fillData.default.fillContactDetails(input.contactDetails.firstName, input.contactDetails.lastName, input.contactDetails.email, input.contactDetails.phone, input.contactDetails.nationality);\n// Passengers\n_fillData.default.fillPassengerDetails(gender, input.contactDetails.firstName, input.contactDetails.middleName, input.contactDetails.lastName, input.contactDetails.nationality, input.contactDetails.passportNumber);\ncy.wait(2000);\ncy.xpath(`//button[@data-component=\"flight-continue-to-addOns-button\"]`).click({\n  force: true\n});\ncy.contains('[role=\"radio\"]', \"No, thanks, I’ll risk it.\").click();\ncy.xpath(`//button[@type=\"submit\" and @data-testid=\"continue-to-payment-button\"]`).click();\ncy.wait(2000);\ncy.xpath(`//button[@data-element-name=\"decline-button\"]`).click({\n  force: true\n});\ncy.wait(5000);\ncy.xpath(`//span/a[@data-testid=\"toggle-text-component\"]`).should('be.visible').click({\n  force: true\n});\n_cekData.default.cekNameContact(input.contactDetails.firstName, input.contactDetails.lastName);\n_cekData.default.cekEmailContact(input.contactDetails.email);\n_cekData.default.cekPhoneContact(input.contactDetails.phone);\n_cekData.default.cekPassengerName(input.contactDetails.firstName, input.contactDetails.middleName, input.contactDetails.lastName);\ncy.get(\"@getTotalPrice\").then(totalPrice => {\n  cy.xpath(`//div[@data-component=\"breakdownlist-2\"]//dd[@data-component=\"mob-flight-price-total-desc\"]/span`).should('be.visible').and('have.text', totalPrice);\n});\ncy.get(\"@getDepartureTime\").then(departureTime => {\n  cy.xpath(`//span[@data-component=\"mob-flight-segment-departure\"][@data-value=\"${departureTime}\"]`).should('have.text', `${departureTime}`);\n});\ncy.get(\"@getArrivalTime\").then(arrivalTime => {\n  cy.xpath(`//span[@data-component=\"mob-flight-segment-arrival\"][@data-value=\"${arrivalTime}\"]`).should('have.text', `${arrivalTime}`);\n});",
+              "err": {},
+              "uuid": "18219a6f-06e3-435c-8817-8c02c30e1d0c",
+              "parentUUID": "d586304e-00e0-4db5-8e2d-b8a55eb46efd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "18219a6f-06e3-435c-8817-8c02c30e1d0c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 50351,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "05b1573a-c854-4c60-a9ad-e3b3a6cf500e",
+      "title": "",
+      "fullFile": "cypress/e2e/amazon/amazon.cy.js",
+      "file": "cypress/e2e/amazon/amazon.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8d890268-1e33-4d61-9e61-20374025418e",
+          "title": "E2E Automation Cari Kursi di Amazon",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cari Kursi di Amazon",
+              "fullTitle": "E2E Automation Cari Kursi di Amazon Cari Kursi di Amazon",
+              "timedOut": null,
+              "duration": 23542,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\ncy.wait(8000);\ncy.scrollTo(\"top\");\n_cariBarang.default.typeKeyword(`${input.typeKeyword}`);\ncy.wait(1000);\n_pilihSortDropdown.default.selectPriceDesc();\ncy.wait(3000);\n_Barang.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_Barang.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\n_Barang.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_Barang.default.clickBarang();\n_detailBarang.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_detailBarang.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});\n// cy.then((data) => {\n//     cy.wrap(data).as('expectedData')\n//     cy.get('@expectedData')\n// })",
+              "err": {},
+              "uuid": "2ce8e813-73b9-4e54-9ef4-f9c860e45061",
+              "parentUUID": "8d890268-1e33-4d61-9e61-20374025418e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2ce8e813-73b9-4e54-9ef4-f9c860e45061"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 23542,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "913d47dd-349d-49dc-b5fc-b7e9764416ac",
+      "title": "",
+      "fullFile": "cypress/e2e/agoda/agoda.cy.js",
+      "file": "cypress/e2e/agoda/agoda.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dd796cc6-4f23-44a9-ab71-39799969b23f",
+          "title": "E2E Automation Cari Tiket di Agoda",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Pesan Tiket dari Jakarta ke Singapura dengan Malaysia Airlines",
+              "fullTitle": "E2E Automation Cari Tiket di Agoda Pesan Tiket dari Jakarta ke Singapura dengan Malaysia Airlines",
+              "timedOut": null,
+              "duration": 43383,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\n_destinationPlan.default.clickFlightTab();\ncy.wait(5000);\n// Flying From\n_destinationPlan.default.flyingFrom(input.cityFrom, input.departureAirport, input.departureFrom);\n// Flying To\n_destinationPlan.default.flyingTo(input.cityArrival, input.arrivalAirport, input.arrivalTo);\n// cy.xpath(`//div[@class=\"DayPicker-Months DayPicker-Months-Wide\"]/div[1]`).should('have.contain',`${monthNow}`);\ncy.xpath(`//span[@data-selenium-date='${nextDayDate.toFormat(\"yyyy-MM-dd\")}']`).click({\n  multiple: true\n});\n_destinationPlan.default.dateSelectorTitle().then(val => {\n  expect(val).to.be.equal(`${nextDayDate.day} ${nextDayDate.monthShort} ${nextDayDate.year}`);\n});\n_destinationPlan.default.dateSelectorDesc().then(val => {\n  expect(val).to.be.equal(`${nextDayDate.toFormat(\"ccc\")}, ${nextDayDate.day} ${nextDayDate.monthShort} ${nextDayDate.year}`);\n});\n_destinationPlan.default.checkCabin(input.passenger, input.cabinType);\n_destinationPlan.default.clickSearchFlights();\ncy.wait(3000);\n_cariPesawat.default.cekListUrl(input.departureFrom, input.arrivalTo, nextDayDate.toFormat(\"yyyy-MM-dd\"), input.cabinType, input.passenger);\n_cariPesawat.default.selectMalaysiaAirlines();\n_cariPesawat.default.clickSortByDropdown;\ncy.xpath(`//div[@data-testid=\"departure-time\"]//h3`).each($ele => {\n  dataDepTime.push($ele.text());\n}).then(() => {\n  const setDepTime = new Set(dataDepTime);\n  timeList = Array.from(setDepTime);\n});\n_cariPesawat.default.clickListMalaysiaAirlines(timeList[0]);\ncy.wait(3000);\n// Contact Details\n_fillData.default.fillContactDetails(input.contactDetails.firstName, input.contactDetails.lastName, input.contactDetails.email, input.contactDetails.phone, input.contactDetails.nationality);\n// Passengers\n_fillData.default.fillPassengerDetails(gender, input.contactDetails.firstName, input.contactDetails.middleName, input.contactDetails.lastName, input.contactDetails.nationality, input.contactDetails.passportNumber);\ncy.wait(2000);\ncy.xpath(`//button[@data-component=\"flight-continue-to-addOns-button\"]`).click({\n  force: true\n});\ncy.contains(`[role=\"radio\"]`, `No, thanks`).click();\ncy.xpath(`//button[@type=\"submit\" and @data-testid=\"continue-to-payment-button\"]`).click();\ncy.wait(2000);\ncy.xpath(`//button[@data-element-name=\"decline-button\"]`).click({\n  force: true\n});\ncy.wait(5000);\ncy.xpath(`//span/a[@data-testid=\"toggle-text-component\"]`).should('be.visible').click({\n  force: true\n});\n_cekData.default.cekNameContact(input.contactDetails.firstName, input.contactDetails.lastName);\n_cekData.default.cekEmailContact(input.contactDetails.email);\n_cekData.default.cekPhoneContact(input.contactDetails.phone);\n_cekData.default.cekPassengerName(input.contactDetails.firstName, input.contactDetails.middleName, input.contactDetails.lastName);\ncy.get(\"@getTotalPrice\").then(totalPrice => {\n  cy.xpath(`//div[@data-component=\"breakdownlist-2\"]//dd[@data-component=\"mob-flight-price-total-desc\"]/span`).should('be.visible').and('have.text', totalPrice);\n});\ncy.get(\"@getDepartureTime\").then(departureTime => {\n  cy.xpath(`//span[@data-component=\"mob-flight-segment-departure\"][@data-value=\"${departureTime}\"]`).should('have.text', `${departureTime}`);\n});\ncy.get(\"@getArrivalTime\").then(arrivalTime => {\n  cy.xpath(`//span[@data-component=\"mob-flight-segment-arrival\"][@data-value=\"${arrivalTime}\"]`).should('have.text', `${arrivalTime}`);\n});",
+              "err": {},
+              "uuid": "fccfd308-fedc-4cc0-bb34-e661c50e4e25",
+              "parentUUID": "dd796cc6-4f23-44a9-ab71-39799969b23f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fccfd308-fedc-4cc0-bb34-e661c50e4e25"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 43383,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1812b68d-1365-447d-bd6f-2987b35ad829",
+      "title": "",
+      "fullFile": "cypress/e2e/amazon/amazon.cy.js",
+      "file": "cypress/e2e/amazon/amazon.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "367d52df-af9b-4c7e-bf11-84f93ca9cdce",
+          "title": "E2E Automation Cari Kursi di Amazon",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cari Kursi di Amazon",
+              "fullTitle": "E2E Automation Cari Kursi di Amazon Cari Kursi di Amazon",
+              "timedOut": null,
+              "duration": 26229,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\ncy.wait(8000);\ncy.scrollTo(\"top\");\n_cariBarang.default.typeKeyword(`${input.typeKeyword}`);\ncy.wait(1000);\n_pilihSortDropdown.default.selectPriceDesc();\ncy.wait(3000);\n_Barang.default.getTotalData().then($val => {\n  totalData = $val.length;\n  cy.log(`Banyaknya data = ${totalData}`);\n});\n_Barang.default.getNamaBarang().then(data => {\n  nmBarang = data;\n  cy.log(`Nama Barang = ${nmBarang}`);\n});\n_Barang.default.getHargaBarang().then(data => {\n  hrgBarang = data;\n  cy.log(`Harga Barang = ${hrgBarang}`);\n});\n_Barang.default.clickBarang();\n_detailBarang.default.checkNamaBarang().then(data => {\n  expect(data.trim()).equal(nmBarang);\n});\n_detailBarang.default.checkHrgBarang().then(data => {\n  expect(data.trim()).equal(hrgBarang);\n});\n// cy.then((data) => {\n//     cy.wrap(data).as('expectedData')\n//     cy.get('@expectedData')\n// })",
+              "err": {},
+              "uuid": "dda61f98-93f4-46de-8b70-ffb167b3f55d",
+              "parentUUID": "367d52df-af9b-4c7e-bf11-84f93ca9cdce",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dda61f98-93f4-46de-8b70-ffb167b3f55d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 26229,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "f7ae2627-c016-4511-b444-23e7f33f7760",
+      "title": "",
+      "fullFile": "cypress/e2e/youtube/youtube.cy.js",
+      "file": "cypress/e2e/youtube/youtube.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f63bfa02-c6b7-4191-81b4-c82a60a53547",
+          "title": "E2E Automation Cari Trending Video di Youtube",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Search Video Trending on Youtube",
+              "fullTitle": "E2E Automation Cari Trending Video di Youtube Search Video Trending on Youtube",
+              "timedOut": null,
+              "duration": 23337,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(`${input.url}`);\n_homePage.default.getLangYoutube().then(langAttr => {\n  cy.log(`Language Default : ${langAttr}`);\n  lang = langAttr === \"id-ID\" ? \"id\" : \"en\";\n});\ncy.then(() => {\n  _homePage.default.goToTrendingMenu(input[lang].explore);\n  _homePage.default.goToMoviesTab(input[lang].movie);\n  // Get Judul Film\n  _trendingListPage.default.getJudulFilm().then(judul => {\n    judulFilm = judul;\n  });\n  // Get Channel\n  _trendingListPage.default.getChannelYoutube().then(src => {\n    channel = src;\n  });\n  cy.then(() => {\n    cy.log(`Judul Film : ${judulFilm}`);\n    cy.log(`Channel Name : ${channel}`);\n    _trendingListPage.default.clickMovies();\n    cy.wait(10000);\n    _moviePage.default.getMovieTitle(judulFilm);\n    _moviePage.default.getMovieChannel(channel);\n    _moviePage.default.clickShareAndCopy(input[lang].share);\n    _moviePage.default.getLinkUrl().then(link => {\n      cy.log(`Link Url : ${link}`);\n    });\n  });\n});",
+              "err": {},
+              "uuid": "33dee5d1-224a-4bc3-a478-88213ea0e33e",
+              "parentUUID": "f63bfa02-c6b7-4191-81b4-c82a60a53547",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "33dee5d1-224a-4bc3-a478-88213ea0e33e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 23337,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
